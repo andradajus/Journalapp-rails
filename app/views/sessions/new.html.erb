@@ -1,0 +1,23 @@
+<h2>Login</h2>
+
+<%= form_with(url: login_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :username_or_email %>
+    <%= form.text_field :username_or_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Login" %>
+  </div>
+
+   <div class="">
+    <%= link_to "Register", new_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+<% end %>
+
+<%= link_to 'Login as Guest', dashboard_path %>

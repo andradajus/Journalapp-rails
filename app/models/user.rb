@@ -1,10 +1,7 @@
-require 'bcrypt'
 
 class User < ApplicationRecord
   attr_accessor :password_confirmation
-  has_secure_password
   before_create :set_uid
-  before_save :encrypt_password
 
   validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
   validates :password_confirmation, presence: true, if: :password_required?
