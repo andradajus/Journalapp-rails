@@ -1,0 +1,15 @@
+<h2>Planner</h2>
+
+<ul>
+  <% tasks.each do |task| %>
+    <li>
+      <strong>Category:</strong> <%= task.category %><br>
+      <strong>Task:</strong> <%= task.task %><br>
+      <strong>Deadline Date:</strong> <%= task.deadline %>
+      <strong>Status:</strong> <%= task.status %><br>
+    <strong>Description:</strong> <%= task.description %><br>
+    </li>
+  <% end %>
+</ul>
+
+

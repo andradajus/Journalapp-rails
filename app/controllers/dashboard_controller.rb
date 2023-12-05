@@ -6,5 +6,6 @@ class DashboardController < ApplicationController
   @random_quote = "This is a sample quote"
   @recent_entries = Entry.order(created_at: :desc).limit(5)
   @upcoming_reminders = Reminder.where('date >= ?', DateTime.now).order(date: :asc).limit(5)
+  @tasks = Task.all
   end
 end

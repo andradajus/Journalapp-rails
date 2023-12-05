@@ -2,7 +2,10 @@
   <div class="flex items-center flex-shrink-0 text-white mr-6">
     <%= link_to root_path, class: "flex items-center" do %>
       <%= image_tag('https://www.svgrepo.com/show/344939/journal-bookmark.svg', class: 'fill-current h-8 w-8 mr-2', width: 75, height: 75) %>
-      <span class="font-semibold text-xl tracking-tight">Journal App</span>
+      <div class="flex flex-col">
+      <span class="font-semibold text-xl tracking-tight">Journal App </span>
+      <sub class="ml-1">by Justin</sub>
+      </div>
     <% end %>
   </div>
   <div class="block lg:hidden">
@@ -22,9 +25,10 @@
         Blog
       <% end %>
     </div>
-    <div class="flex flex-row px-3 py-2 shadow rounded-md hover:text-white bg-red-500 hover:bg-red-700 mt-4 lg:mt-0 items-center justify-center text-center">
+    <%= link_to login_path, class: 'flex flex-row px-3 py-2 shadow rounded-md hover:text-white bg-red-500 hover:bg-red-700 mt-4 lg:mt-0 items-center justify-center text-center' do %>
   <%= image_tag('https://www.svgrepo.com/show/374962/logout.svg', class: 'fill-current h-8 w-8 mr-2', width: 10, height: 110) %>
-  <%= link_to 'Logout', login_path %>
-    </div>
+  Logout
+  <% end %>
+
   </div>
 </nav>
