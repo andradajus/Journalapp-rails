@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
+    @calendar_events = @tasks.map { |task| { title: task.name, start: task.deadline } }
   end
 
   def show

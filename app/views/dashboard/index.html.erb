@@ -40,7 +40,12 @@
   </div>
 
   <div class="bg-blue-200 col-span-2 row-span-3 col-start-4 row-start-6">
-    CALENDAR!!
+     <%= calendar tasks: @tasks, attribute: :deadline do |day, tasks| %>
+    <strong><%= day.day %></strong>
+    <% tasks.each do |task| %>
+      <p><%= link_to task.category, task %></p>
+    <% end %>
+  <% end %>
   </div>
 
   <div class="bg-amber-300 col-span-2 row-span-2 col-start-4 row-start-4">
