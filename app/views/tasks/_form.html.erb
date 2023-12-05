@@ -1,17 +1,31 @@
+
 <%= form_with(model: task, url: tasks_path, method: :post, local: true) do |form| %>
-  <div class="mb-4">
-    <%= form.label :category, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-    <%= form.select :category, Task::CATEGORIES, { prompt: 'Select a category' }, class: 'form-select' %>
-  </div>
+    <div class="ml-2"> 
+        <div class="flex flex-row justify-between">
+            <div class="flex flex-col">
+                <%= form.label :category %>
+                <%= form.select :category, Task::CATEGORIES, { prompt: 'Select a category' }, class: 'shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2' %>
+            </div>
 
-  <%= form.label :task, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-  <%= form.text_field :task, class: 'form-input' %>
+            <div class="flex flex-col mr-2">
+                <%= form.label :task %>
+                <%= form.text_field :task, class: 'shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2' %>
+            </div>
 
-  <%= form.label :deadline, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-  <%= form.date_field :deadline, class: 'form-input' %>
+            <div class="flex flex-col mr-2">
+                <%= form.label :deadline %>
+                <%= form.date_field :deadline, class: 'shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2' %>
+            </div>
+        </div>
 
-  <%= form.label :description, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-  <%= form.text_area :description, class: 'form-textarea' %>
+            <div class="flex flex-col mb-2">
+                <%= form.label :description %>
+                <%= form.text_area :description, class: 'shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2' %>
+            </div>
 
-  <%= form.submit 'Create Task', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
-<% end %>
+            <div class="flex justify-center mt-1 cursor-pointer">
+                <%= form.submit 'Create Task', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+            </div>
+                <% end %>
+    </div>
+

@@ -1,0 +1,11 @@
+<div class="reminders-section">
+  <h3>Reminders</h3>
+  <% @reminders_within_week.each do |reminder| %>
+    <p><%= reminder.title %> - <%= reminder.date %></p>
+  <% end %>
+
+  <h3>Reminders within 30 days</h3>
+  <% @reminders_within_30_days.each do |reminder| %>
+    <p><%= reminder.title %> - <%= reminder.date %></p>
+  <% end %>
+</div>

@@ -7,5 +7,7 @@ class DashboardController < ApplicationController
   @recent_entries = Entry.order(created_at: :desc).limit(5)
   @upcoming_reminders = Reminder.where('date >= ?', DateTime.now).order(date: :asc).limit(5)
   @tasks = Task.all
+  @reminders_within_week = Reminder.where('date <= ?', 1.week.from_now)
+  @reminders_within_30_days = Reminder.where('date <= ?', 30.days.from_now)
   end
 end

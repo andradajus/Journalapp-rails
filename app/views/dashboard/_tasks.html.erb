@@ -1,15 +1,16 @@
-<h2>Planner</h2>
 
-<ul>
-  <% tasks.each do |task| %>
-    <li>
-      <strong>Category:</strong> <%= task.category %><br>
-      <strong>Task:</strong> <%= task.task %><br>
-      <strong>Deadline Date:</strong> <%= task.deadline %>
-      <strong>Status:</strong> <%= task.status %><br>
-    <strong>Description:</strong> <%= task.description %><br>
-    </li>
-  <% end %>
-</ul>
+<div classname="overflow-scroll">
+    <ul class="flex flex-wrap">
+    <% tasks.each do |task| %>
+        <li class="shrink shadow-md rounded-md hover:scale-110 hover:ease-in-out duration-300 object-cover m-2 p-2">
+        <strong>Category:</strong> <%= task.category %><br>
+        <strong>Task:</strong> <%= task.task %><br>
+        <strong>Deadline Date:</strong> <%= task.deadline %><br>
+        <strong>Status:</strong> <%= task.status %><br>
+        <strong>Description:</strong> <%= task.description %><br>
+        </li>
+    <% end %>
+    </ul>
+</div>
 
 
