@@ -10,62 +10,66 @@
       </ul>
     </div>
   <% end %>
-
-  <%
-=begin%>
- <div class="my-5">
-    <%= form.label :uid %>
-    <%= form.text_field :uid, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div> 
-<%
-=end%>
-
-  <div class="my-5">
+  
+<span class="text-2xl font-bold">Registration Form</span>  
+<div class="flex flex-col">
+<div class="flex flex-row justify-between">
+  <div class="flex flex-col my-5">
     <%= form.label :username %>
-    <%= form.text_field :username, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :username, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
   </div>
 
-  <div class="my-5">
+  <div class="flex flex-col my-5">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :email, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
   </div>
+</div>
 
-  <div class="my-5">
+<div class="flex flex-row justify-between">
+  <div class="flex flex-col my-5">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :first_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
   </div>
 
-  <div class="my-5">
+  <div class="flex flex-col my-5">
     <%= form.label :middle_name %>
-    <%= form.text_field :middle_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :middle_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
   </div>
 
-  <div class="my-5">
+  <div class="flex flex-col my-5">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :last_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
   </div>
+</div>
 
-  <div class="my-5">
+<div class="flex flex-row justify-between">
+  <div class="flex flex-col my-5">
     <%= form.label :birthday %>
-    <%= form.date_field :birthday, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :birthday, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-56" %>
   </div>
 
-  <div class="my-5">
+  <div class="flex flex-col my-5">
     <%= form.label :country %>
-    <%= form.text_field :country, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :country, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-56" %>
   </div>
+</div>
 
-  <div class="my-5">
+<div class="flex flex-row justify-between">
+  <div class="flex flex-col my-5">
     <%= form.label :password %>
-    <%= form.password_field :password_digest, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.password_field :password_digest, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
   </div>
 
-   <div class="my-5">
+   <div class="flex flex-col my-5">
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.password_field :password_confirmation, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
   </div>
+</div>
+
+</div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
   </div>
+   <%= link_to "Login", login_path, class: "ml-2 rounded-lg p-2 bg-gray-300 hover:bg-gray-600 hover:text-white" %>
 <% end %>

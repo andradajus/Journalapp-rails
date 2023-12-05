@@ -1,4 +1,61 @@
-<div>
-  <h1 class="font-bold text-4xl">Dashboard#index</h1>
-  <p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="grid grid-cols-8 grid-rows-8 gap-2 w-screen h-auto">
+  <div class="bg-cyan-200 col-span-4 row-span-2 col-start-1 row-start-2 w-auto h-auto">
+
+      <%
+=begin%>
+ <%=begin%>
+      <h2>Welcome, <%= @user.first_name %> <%= @user.last_name %></h2> 
+      <%=end%>  
+<%
+=end%>
+
+
+    <div class="flex flex-row justify-between">
+      <div class="flex flex-row">
+        <span>Hi,</spann>
+        <span>Test User</span>
+      </div>
+
+      <div>
+        <span>Today is <%= @current_date.strftime('%B %e, %Y') %></span>
+      </div>
+
+    </div>
+        <span class="italic">"<%= @random_quote %>"</span>
+  </div>
+
+
+
+
+  <div class="bg-yellow-200 col-span-3 row-span-2 col-start-5 row-start-2 w-auto h-auto">
+    <%
+=begin%>
+ <%= render 'reminders', reminders: @upcoming_reminders %> 
+<%
+=end%>
+  </div>
+  <div class="bg-blue-200 col-span-2 row-span-3 col-start-6 row-start-6 w-auto h-auto">
+    <%
+=begin%>
+ <%= render 'calendar' %> 
+<%
+=end%>
+  </div>
+  <div class="bg-pink-200 col-span-5 row-span-5 col-start-1 row-start-4 w-auto h-auto">
+    <%
+=begin%>
+ <%= render 'planner' %> 
+<%
+=end%>
+  </div>
+  <div class="col-span-7 col-start-1 row-start-1 w-screen">
+  <%= render partial: "shared/navbar" %>
+  </div>
+  <div class="bg-amber-300 col-span-2 row-span-2 col-start-6 row-start-4 w-auto h-auto">
+    <%
+=begin%>
+ <%= render 'create_reminders' %> 
+<%
+=end%>
+  </div>
 </div>

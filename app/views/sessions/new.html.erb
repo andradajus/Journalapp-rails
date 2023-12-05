@@ -1,23 +1,24 @@
-<h2>Login</h2>
-
 <%= form_with(url: login_path, method: :post) do |form| %>
-  <div class="field">
+<div class="flex flex-col items-center justify-center text-center h-screen w-screen bg-red-200">
+  
+  <div class="flex flex-col">
     <%= form.label :username_or_email %>
-    <%= form.text_field :username_or_email %>
+    <%= form.text_field :username_or_email, class: "shadow rounded-md border border-gray-200 outline-none" %>
   </div>
 
-  <div class="field">
+  <div class="flex flex-col">
     <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= form.password_field :password, class: "shadow rounded-md border border-gray-200 outline-none" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "Login" %>
+   <div class="mt-3">
+    <%= link_to 'Login as Guest', dashboard_path, class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
+    <%= link_to "Register", new_user_path, class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
   </div>
 
-   <div class="">
-    <%= link_to "Register", new_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="mt-4">
+    <%= link_to 'Login', dashboard_path, class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
   </div>
+</div>
 <% end %>
 
-<%= link_to 'Login as Guest', dashboard_path %>

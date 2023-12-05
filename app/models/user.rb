@@ -1,5 +1,7 @@
 
 class User < ApplicationRecord
+  has_many :entries
+  has_many :reminders
   attr_accessor :password_confirmation
   before_create :set_uid
 
