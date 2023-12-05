@@ -1,24 +1,17 @@
-# README
+This project is a Journal Planner Website for Avion School
+Rails version Rails 7.1.2
+Ruby version 3.2.2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Gems used
+### Simple calendar or [GitHub repository](https://github.com/excid3/simple_calendar)
 
-Things you may want to cover:
+`gem "simple_calendar", "~> 2.4"`
 
-* Ruby version
+### Rails tailwind or [GitHub repository](https://github.com/rails/tailwindcss-rails)
 
-* System dependencies
+`./bin/bundle add tailwindcss-rails`
+`./bin/rails tailwindcss:install`
 
-* Configuration
+then run on bin/dev instead of rails s
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
