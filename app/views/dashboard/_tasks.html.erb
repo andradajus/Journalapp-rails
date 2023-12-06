@@ -6,8 +6,21 @@
         <strong>Category:</strong> <%= task.category %><br>
         <strong>Task:</strong> <%= task.task %><br>
         <strong>Deadline Date:</strong> <%= task.deadline %><br>
-        <strong>Status:</strong> <%= task.status %><br>
+        <strong>Status:</strong> <%= task.status.titleize %><br>
         <strong>Description:</strong> <%= task.description %><br>
+
+        
+         <%= form_with(model: task, method: :delete, local: true) do |form| %>
+          <%= form.submit 'Delete', data: { confirm: 'Are you sure?' }, class: 'text-red-600 cursor-pointer' %>
+        <% end %>
+        <%= link_to 'Edit', edit_task_path(task), class: 'text-blue-600' %>
+        
+           <% if task.pending? %>
+          <%= form_with(model: task, url: update_status_task_path(task), method: :patch, local: true, class: 'inline-block') do |form| %>
+            <%= form.hidden_field :status, value: 'completed' %>
+            <%= form.submit 'Mark as Completed', class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+          <% end %>
+        <% end %>
         </li>
     <% end %>
     </ul>
