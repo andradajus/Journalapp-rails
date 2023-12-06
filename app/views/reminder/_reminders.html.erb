@@ -1,0 +1,37 @@
+
+<% if @tasks_due_today.present? %>
+  <h3>Tasks due today</h3>
+  <ul>
+    <% @tasks_due_today.each do |task| %>
+      <li><%= task.task %> - <%= task.deadline %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @tasks_due_tomorrow.present? %>
+  <h3>Tasks due tomorrow</h3>
+  <ul>
+    <% @tasks_due_tomorrow.each do |task| %>
+      <li><%= task.task %> - <%= task.deadline %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @tasks_due_within_week.present? %>
+  <h3>Tasks due this week</h3>
+  <ul>
+    <% @tasks_due_within_week.each do |task| %>
+      <li><%= task.task %> - <%= task.deadline %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @tasks_due_within_month.present? %>
+  <h3>Tasks due this month</h3>
+  <ul>
+    <% @tasks_due_within_month.each do |task| %>
+      <li><%= task.task %> - <%= task.deadline %></li>
+    <% end %>
+  </ul>
+<% end %>
+

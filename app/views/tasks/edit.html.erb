@@ -49,6 +49,6 @@
   </div>
 
   <div class="bg-amber-300 col-span-2 row-span-2 col-start-4 row-start-4">
-    <%= render partial: 'dashboard/reminders' %>
+     <%= render partial: 'reminder/reminders', locals: { reminders_due_today: @reminders_due_today, reminders_within_week: @reminders_within_week } %>
   </div>
 </div>

@@ -39,16 +39,16 @@
     <%= render partial: 'tasks', locals: { tasks: @tasks } %>
   </div>
 
-  <div class="bg-blue-200 col-span-2 row-span-3 col-start-4 row-start-6">
-     <%= calendar tasks: @tasks, attribute: :deadline do |day, tasks| %>
-    <strong><%= day.day %></strong>
-    <% tasks.each do |task| %>
-      <p><%= link_to task.category, task %></p>
-    <% end %>
-  <% end %>
-  </div>
+ <div class="bg-blue-200 col-span-2 row-span-3 col-start-4 row-start-6">
+ <%= month_calendar do |date| %>
+  <%= date.day %>
+<% end %>
+</div>
+
+
+
 
   <div class="bg-amber-300 col-span-2 row-span-2 col-start-4 row-start-4">
-    <%= render partial: 'dashboard/reminders' %>
+     <%= render partial: 'reminder/reminders', locals: { reminders_due_today: @reminders_due_today, reminders_within_week: @reminders_within_week } %>
   </div>
 </div>

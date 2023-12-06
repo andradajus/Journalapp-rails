@@ -1,0 +1,15 @@
+<!-- Due Today -->
+<h3>Tasks Due Today</h3>
+<%= render partial: 'tasks', locals: { tasks: @tasks_due_today } %>
+
+<!-- Due Tomorrow -->
+<h3>Tasks Due Tomorrow</h3>
+<%= render partial: 'tasks', locals: { tasks: @tasks_due_tomorrow } %>
+
+<!-- Tasks within Week -->
+<h3>Tasks Due Within a Week</h3>
+<%= render partial: 'tasks', locals: { tasks: @tasks_within_week } %>
+
+<!-- Tasks within 30 Days -->
+<h3>Tasks Due Within 30 Days</h3>
+<%= render partial: 'tasks', locals: { tasks: @tasks_within_30_days } %>
