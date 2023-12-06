@@ -35,7 +35,7 @@
     <%= render 'tasks/form', task: Task.new %> 
   </div>
 
-  <div class="bg-pink-200 col-span-3 row-span-5 row-start-4 h-full">
+  <div class="bg-pink-200 col-span-3 row-span-5 row-start-4 grow">
     <%= render partial: 'tasks', locals: { tasks: @tasks } %>
   </div>
 

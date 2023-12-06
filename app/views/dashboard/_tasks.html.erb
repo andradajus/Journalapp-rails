@@ -1,29 +1,53 @@
-
-<div classname="overflow-scroll">
-    <ul class="flex flex-wrap">
+<div class="overflow-auto">
+  <ul class="flex flex-wrap">
     <% tasks.each do |task| %>
-        <li class="shrink shadow-md rounded-md hover:scale-110 hover:ease-in-out duration-300 object-cover m-2 p-2">
-        <strong>Category:</strong> <%= task.category %><br>
-        <strong>Task:</strong> <%= task.task %><br>
-        <strong>Deadline Date:</strong> <%= task.deadline %><br>
-        <strong>Status:</strong> <%= task.status.titleize %><br>
-        <strong>Description:</strong> <%= task.description %><br>
-
+      <li class="flex shrink justify-around shadow-md rounded-md hover:scale-110 hover:ease-in-out duration-300 object-cover p-2 m-2 h-48 w-64">
+        <div class="relative cursor-pointer">
         
-         <%= form_with(model: task, method: :delete, local: true) do |form| %>
-          <%= form.submit 'Delete', data: { confirm: 'Are you sure?' }, class: 'text-red-600 cursor-pointer' %>
-        <% end %>
-        <%= link_to 'Edit', edit_task_path(task), class: 'text-blue-600' %>
-        
-           <% if task.pending? %>
-          <%= form_with(model: task, url: update_status_task_path(task), method: :patch, local: true, class: 'inline-block') do |form| %>
-            <%= form.hidden_field :status, value: 'completed' %>
-            <%= form.submit 'Mark as Completed', class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+        <%= form_with(model: task, method: :delete, data: { confirm: "Are you sure?" }, local: true, class: 'delete-form') do |form| %>
+            <%= form.button '', class: 'delete-button' do %>
+              <%= image_tag('https://www.svgrepo.com/show/244045/delete-trash.svg', alt: 'Delete Icon 1', class: 'fill-current hover:opacity-0 h-5 w-5 mr-2 absolute top-0 right-0') %>
+              <%= image_tag('https://www.svgrepo.com/show/244047/delete-trash.svg', alt: 'Delete Icon 2', class: 'fill-current opacity-0 hover:opacity-100 h-5 w-5 mr-2 absolute top-0 right-0') %>
+            <% end %>
           <% end %>
-        <% end %>
-        </li>
+
+        <div>
+          <div class="flex flex-row">
+            <strong class="mr-1">Category:</strong> 
+            <%= task.category %>
+          </div>
+
+          <div class="flex flex-row">
+            <strong class="mr-1">Task: </strong> 
+            <%= task.task %>
+          </div>
+
+          <div class="flex flex-row">
+            <strong class="mr-1">Deadline: </strong> 
+            <%= task.deadline %>
+          </div>
+
+          <div class="flex flex-row">
+            <strong class="mr-1">Status: </strong> 
+            <%= task.status&.titleize %>
+          </div>
+
+          <div class="flex flex-row text-sm">
+            <%= task.description %>
+          </div>
+        </div>
+
+        <div class="flex flex-row justify-around">
+          <%= link_to 'Edit', edit_task_path(task), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded cursor-pointer text-sm' %>
+          <% if task.pending? %>
+            <%= form_with(model: task, url: update_status_task_path(task), method: :patch, local: true, class: 'inline-block') do |form| %>
+              <%= form.hidden_field :status, value: 'completed' %>
+              <%= form.submit 'Mark as Completed', class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded cursor-pointer text-sm ml-1' %>
+            <% end %>
+          <% end %>
+        </div>
+
+      </li>
     <% end %>
-    </ul>
+  </ul>
 </div>
-
-
