@@ -8,12 +8,14 @@
       <div class="flex">
         <div class="flex flex-row">
           <span class="text-2xl">Hi, </span>
-          <span class="text-2xl font-bold">Test User</span>
+          <span class="text-2xl font-bold"><%= @user.first_name %> <%= @user.last_name %></span>
         </div>
       </div>
       
       <div >
-        <span>Weather today</span>
+        <span>
+        <%= render partial: 'dashboard/weather_today_widget' %>
+        </span>
       </div>
 
       <div>
@@ -25,7 +27,7 @@
       </div>
 
       <div>
-        <span class="italic">"<%= @random_quote %>"</span>
+        <span class="italic">"<%= random_quote %>"</span>
       </div>
     </div>
   </div>

@@ -20,14 +20,16 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.new(task_params)
     @task.status = :pending
+
     if @task.save
       redirect_to dashboard_path, notice: 'Task was successfully created.'
     else
       render 'dashboard/index'
     end
   end
+
 
   def edit
     @current_date = Date.today
