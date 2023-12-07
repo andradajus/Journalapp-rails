@@ -2,14 +2,15 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.order(:position).all
     @calendar_events = @tasks.map { |task| { title: task.name, start: task.deadline } }
     @current_date = Date.today
-    @tasks_due_today = Task.where(deadline: Date.today)
-    @tasks_due_tomorrow = Task.where(deadline: Date.tomorrow)
-    @tasks_within_week = Task.where('deadline <= ?', 1.week.from_now)
-    @tasks_within_30_days = Task.where('deadline <= ?', 30.days.from_now)
+    @tasks_due_today = @tasks.where(deadline: Date.today)
+    @tasks_due_tomorrow = @tasks.where(deadline: Date.tomorrow)
+    @tasks_within_week = @tasks.where('deadline <= ?', 1.week.from_now)
+    @tasks_within_30_days = @tasks.where('deadline <= ?', 30.days.from_now)
   end
+
 
   def show
     # ...
@@ -66,6 +67,19 @@ class TasksController < ApplicationController
       redirect_to dashboard_path
     end
   end
+
+  def move_up
+    @task = Task.find(params[:id])
+    @task.move_higher
+    redirect_to dashboard_path, notice: 'Task moved up successfully.'
+  end
+
+  def move_down
+    @task = Task.find(params[:id])
+    @task.move_lower
+    redirect_to dashboard_path, notice: 'Task moved down successfully.'
+  end
+
 
   private
 

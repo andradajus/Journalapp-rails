@@ -1,47 +1,42 @@
-<div class="bg-indigo-400 grid grid-cols-5 grid-rows-8 gap-3">
+<div class="grid grid-cols-5 grid-rows-7 gap-3 h-screen">
   <div class="col-span-5">
     <%= render partial: "shared/navbar" %>
   </div>
 
-  <div class="bg-cyan-200 col-span-2 row-span-2 row-start-2">
-    <div class="flex flex-col h-full justify-between">
+  <div class="col-span-2 row-span-2 row-start-2 ml-2 bg-slate-200 shadow-md rounded-md shrink">
+    <div class="ml-2 flex flex-col justify-around align-center h-full">
+      <div class="ml-2 mr-2">
+        <div class="text-sm">Today is <span class="italic font-bold"><%= @current_date.strftime('%B %e, %Y') %></span></div>
+      </div>
+
       <div class="flex">
-        <div class="flex flex-row">
+        <div class="flex flex-row mb-1">
           <span class="text-2xl">Hi, </span>
-          <span class="text-2xl font-bold"><%= @user.first_name %> <%= @user.last_name %></span>
+          <span class="text-2xl font-bold ml-1"><%= @user.first_name %> <%= @user.last_name %></span>
         </div>
       </div>
-      
-      <div >
-        <span>
-        <%= render partial: 'dashboard/weather_today_widget' %>
-        </span>
-      </div>
 
       <div>
-        <span>Today is <%= @current_date.strftime('%B %e, %Y') %></span>
-      </div>
-
-      <div>
-        <span class="text-4xl"> What would you like to do today?</span>
-      </div>
-
-      <div>
+        <span class="mt-2 mb-3 text-4xl"> What would you like to do today?</span>
+      </div>     
+     
+      <div class="flex">
         <span class="italic">"<%= random_quote %>"</span>
       </div>
+
     </div>
   </div>
   
 
-  <div class="bg-yellow-200 col-span-3 row-span-2 col-start-3 row-start-2">
+  <div class="col-span-3 row-span-2 col-start-3 row-start-2 ml-2 bg-slate-200 shadow-md rounded-md mr-2">
     <%= render 'tasks/form', task: Task.new %> 
   </div>
 
-  <div class="bg-pink-200 col-span-3 row-span-5 row-start-4 grow">
+  <div class="col-span-3 row-span-5 row-start-4 grow ml-2 bg-slate-200 shadow-md rounded-md">
     <%= render partial: 'tasks', locals: { tasks: @tasks } %>
   </div>
 
- <div class="bg-blue-200 col-span-2 row-span-3 col-start-4 row-start-6">
+ <div class="col-span-2 row-span-3 col-start-4 row-start-6 bg-slate-200 shadow-md rounded-md mr-2">
  <%= month_calendar do |date| %>
   <%= date.day %>
 <% end %>
@@ -50,7 +45,8 @@
 
 
 
-  <div class="bg-amber-300 col-span-2 row-span-2 col-start-4 row-start-4">
+  <div class="col-span-2 row-span-2 col-start-4 row-start-4 bg-slate-200 shadow-md rounded-md mr-2">
      <%= render partial: 'reminder/reminders', locals: { reminders_due_today: @reminders_due_today, reminders_within_week: @reminders_within_week } %>
   </div>
 </div>
+

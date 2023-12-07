@@ -1,23 +1,33 @@
 <%= form_with(url: login_path, method: :post) do |form| %>
-<div class="flex flex-col items-center justify-center text-center h-screen w-screen bg-red-200">
-  
-  <div class="flex flex-col">
-    <%= form.label :username_or_email %>
-    <%= form.text_field :username_or_email, class: "shadow rounded-md border border-gray-200 outline-none" %>
-  </div>
+<div class="bg-slate-500 flex flex-col items-center justify-center text-center h-screen w-screen">
+  <div class="bg-slate-200 p-8 shadow-md rounded-md">
+    <div class="flex justify-center items-center flex-row mb-4">
+      <div class="flex flex-row p-3 pb-4 shadow-md rounded-md hover:scale-110">
+        <div>
+          <%= image_tag('https://www.svgrepo.com/show/344939/journal-bookmark.svg', class: 'fill-current h-8 w-8 mr-2', width: 75, height: 75) %>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-semibold text-xl tracking-tight">Journal App </span>
+          <sub class="ml-1">by Justin</sub>
+        </div>
+      </div>
+    </div>
 
-  <div class="flex flex-col">
-    <%= form.label :password %>
-    <%= form.password_field :password, class: "shadow rounded-md border border-gray-200 outline-none" %>
-  </div>
+    <div class="flex flex-col">
+      <%= form.label :username_or_email %>
+      <%= form.text_field :username_or_email, class: "shadow rounded-md border border-gray-200 outline-none" %>
+    </div>
 
-   <div class="mt-3">
-    <%= link_to 'Login as Guest', dashboard_path, class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
-    <%= link_to "Register", new_user_path, class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
-  </div>
+    <div class="flex flex-col">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "shadow rounded-md border border-gray-200 outline-none" %>
+    </div>
 
-  <div class="mt-4">
-    <%= form.submit 'Login', class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
+    <div class="mt-3">
+      <%= form.submit 'Login', class: "rounded-lg p-2 bg-slate-500 text-white hover:bg-slate-700" %>
+      <%= link_to "Register", new_user_path, class: "rounded-lg p-2 bg-slate-400 text-white hover:bg-slate-600" %>
+    </div>
+
   </div>
 </div>
 <% end %>

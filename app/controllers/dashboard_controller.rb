@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
     @current_date = Date.today
     @random_quote = "This is a sample quote"
     @recent_entries = Entry.order(created_at: :desc).limit(5)
-    @tasks = Task.all
+    @tasks = current_user.tasks.order(:position).all
     @tasks_due_today = Task.where(deadline: Date.today)
     @tasks_due_tomorrow = Task.where(deadline: Date.tomorrow)
     @tasks_within_week = Task.where('deadline <= ?', 1.week.from_now)

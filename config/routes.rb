@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :tasks do
     member do
       patch 'update_status'
+      patch 'move_up'
+      patch 'move_down'
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

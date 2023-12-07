@@ -1,76 +1,89 @@
 <%= form_with(model: user, class: "contents") do |form| %>  
-<span class="text-2xl font-bold">Registration Form</span>  
-<div class="flex flex-col">
-<div class="flex flex-row justify-between">
-  <div class="flex flex-col my-5">
-    <%= form.label :username %>
-    <%= form.text_field :username, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
-  </div>
-
-  <div class="flex flex-col my-5">
-    <%= form.label :email %>
-    <%= form.text_field :email, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
-  </div>
-</div>
-
-<div class="flex flex-row justify-between">
-  <div class="flex flex-col my-5">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
-  </div>
-
-  <div class="flex flex-col my-5">
-    <%= form.label :middle_name %>
-    <%= form.text_field :middle_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
-  </div>
-
-  <div class="flex flex-col my-5">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
-  </div>
-</div>
-
-<div class="flex flex-row justify-between">
-  <div class="flex flex-col my-5">
-    <%= form.label :birthday %>
-    <%= form.date_field :birthday, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-56" %>
-  </div>
-
-  <div class="flex flex-col my-5">
-    <%= form.label :country %>
-    <%= form.text_field :country, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-56" %>
-  </div>
-</div>
-
-<div class="flex flex-row justify-between">
-  <div class="flex flex-col my-5">
-    <%= form.label :password %>
-    <%= form.password_field :password, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
-  </div>
-
-   <div class="flex flex-col my-5">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
-  </div>
-</div>
-
- <% if user.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="flex h-screen items-center justify-center text-center text-black">
+    <div class="flex flex-col bg-slate-200 shadow-md rounded-md p-5">
+    
+    <div class="flex justify-center items-center flex-row mb-4">
+      <div class="flex flex-row p-3 pb-4 shadow-md rounded-md hover:scale-110">
+        <div>
+          <%= image_tag('https://www.svgrepo.com/show/344939/journal-bookmark.svg', class: 'fill-current h-8 w-8 mr-2', width: 75, height: 75) %>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-semibold text-xl tracking-tight">Journal App </span>
+          <sub class="ml-1">by Justin</sub>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-</div>
+      <span class="text-2xl font-bold">Registration Form</span>  
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-col my-5 required">
+            <%= form.label :username %>
+            <%= form.text_field :username, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
+          </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg p-2 bg-blue-600 text-white hover:bg-blue-900" %>
-  
-   <%= link_to "Login", login_path, class: "ml-2 rounded-lg p-2 bg-gray-300 hover:bg-gray-600 hover:text-white" %>
-   </div>
+          <div class="flex flex-col my-5 required">
+            <%= form.label :email %>
+            <%= form.text_field :email, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
+          </div>
+        </div>
+
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-col my-5 required">
+            <%= form.label :first_name %>
+            <%= form.text_field :first_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+          </div>
+
+          <div class="flex flex-col my-5 ml-2">
+            <%= form.label :middle_name %>
+            <%= form.text_field :middle_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+          </div>
+
+          <div class="flex flex-col my-5 ml-2 required">
+            <%= form.label :last_name %>
+            <%= form.text_field :last_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+          </div>
+        </div>
+
+        <div class="flex flex-row justify-center required">
+          <div class="flex flex-col my-5">
+            <%= form.label :birthday %>
+            <%= form.date_field :birthday, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-56" %>
+          </div>
+
+          <div class="flex flex-col ml-5 my-5 required">
+            <%= form.label :country %>
+            <%= form.text_field :country, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-56" %>
+          </div>
+        </div>
+
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-col my-5 required">
+            <%= form.label :password %>
+            <%= form.password_field :password, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
+          </div>
+
+          <div class="flex flex-col my-5 required">
+            <%= form.label :password_confirmation %>
+            <%= form.password_field :password_confirmation, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-80" %>
+          </div>
+        </div>
+
+          <% if user.errors.any? %>
+            <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+              <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+              <ul>
+                <% user.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="inline">
+            <%= form.submit "Register", class: "rounded-lg p-2 bg-slate-500 text-white hover:bg-slate-700" %>
+            <%= link_to "Login", login_path, class: "rounded-lg p-2 bg-slate-400 text-white hover:bg-slate-600" %>
+          </div>
+    </div>
+  </div>  
 <% end %>

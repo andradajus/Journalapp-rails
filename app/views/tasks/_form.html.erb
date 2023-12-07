@@ -1,6 +1,6 @@
 <%= form_with(model: task, local: true) do |form| %>
-  <div class="ml-2"> 
-    <div class="flex flex-row justify-between">
+  <div class="flex flex-wrap shrink ml-2"> 
+    <div class="flex flex-row justify-between shrink wrap">
       <div class="flex flex-col">
         <%= form.label :category %>
         <%= form.select :category, Task::CATEGORIES, { prompt: 'Select a category' }, class: 'shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2' %>
@@ -17,16 +17,16 @@
       </div>
     </div>
 
-    <div class="flex flex-col mb-2">
+    <div class="flex flex-col mb-2 ">
       <%= form.label :description %>
-      <%= form.text_area :description, class: 'shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2' %>
+      <%= form.text_area :description, class: 'resize-none border rounded p-2 px-3 py-2 mt-2' %>
     </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
 
     <div class="flex justify-center mt-1">
       <% if task.new_record? %>
-        <%= form.submit 'Create Task', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+        <%= form.submit 'Create Task', class: 'rounded-lg p-2 bg-slate-500 text-white hover:bg-slate-700 cursor-pointer rounded cursor-pointer' %>
       <% else %>
         <%= link_to 'Return', dashboard_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
         <%= form.submit 'Update Task', class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer ml-1' %>

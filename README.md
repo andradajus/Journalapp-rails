@@ -35,11 +35,7 @@ Gemfile:
 ## Basic Functions
 
 #### Basic Authentication with login and registration
-
 #### Admin access
-
 #### Task planner CRUD
-
 #### Profile CRUD
-
 #### Reminder function for today and tomorrow
