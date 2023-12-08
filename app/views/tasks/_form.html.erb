@@ -1,9 +1,9 @@
 <%= form_with(model: task, local: true) do |form| %>
-  <div class="flex flex-wrap shrink ml-2"> 
+  <div class="flex flex-col shrink ml-2"> 
     <div class="flex flex-row justify-between shrink wrap">
       <div class="flex flex-col">
         <%= form.label :category %>
-        <%= form.select :category, Task::CATEGORIES, { prompt: 'Select a category' }, class: 'shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2' %>
+        <%= form.select :category, Task::CATEGORIES, {}, class: 'shadow rounded-md border border-gray-200 outline-none px-9 py-2 mt-2' %>
       </div>
 
       <div class="flex flex-col mr-2">

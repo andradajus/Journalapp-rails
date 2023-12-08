@@ -26,16 +26,19 @@ Gemfile:
 `gem 'bcrypt', '~> 3.1', '>= 3.1.12'`  
 `gem install bcrypt -v 3.1.12`
 
+### Act as List [Github](https://github.com/brendon/acts_as_list)
+
+Gemfile:  
+`gem 'acts_as_list'`
+
 #### My go to ruby authentication
-
-### Widget Used
-
-#### [Weather Widget](https://elfsight.com/weather-widget/html/)
 
 ## Basic Functions
 
-#### Basic Authentication with login and registration
-#### Admin access
-#### Task planner CRUD
-#### Profile CRUD
-#### Reminder function for today and tomorrow
+Basic Authentication with login and registration  
+Admin access  
+Task planner CRUD  
+User/Profile CRUD  
+Dynamic Reminder function for today and tomorrow  
+Dynamic Calendar  
+Priority of Tasks
