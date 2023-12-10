@@ -28,12 +28,12 @@
         <% end %>
       <% end %>
     </div>
-    <div class="flex flex-row px-3 py-2 shadow rounded-md hover:text-white bg-red-500 hover:bg-red-700 cursor-pointer">
-      <%= form_tag logout_path, method: :delete, class: 'flex flex-row items-center' do %>
-        <%= image_tag('https://www.svgrepo.com/show/374962/logout.svg', class: 'fill-current h-8 w-8 mr-2') %>
-        <%= submit_tag "Logout", class: 'cursor-pointer' %>
-      <% end %>
-    </div>
+    <%= form_tag logout_path, method: :delete, class: 'flex flex-row items-center' do %>
+      <div class="flex flex-row px-3 py-2 shadow rounded-md hover:text-white bg-red-500 hover:bg-red-700 cursor-pointer">
+          <%= image_tag('https://www.svgrepo.com/show/374962/logout.svg', class: 'fill-current h-8 w-8 mr-2') %>
+          <%= submit_tag "Logout", class: 'cursor-pointer' %>
+      </div>
+    <% end %>
 
 
   </div>

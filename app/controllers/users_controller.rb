@@ -70,8 +70,10 @@ class UsersController < ApplicationController
     def require_admin
       if current_user.nil?
         redirect_to dashboard_path, alert: "Access denied."
-      elsif (params[:controller] == 'users' || params[:controller] == 'tasks') && params[:action] == 'index' && !current_user.admin_status
+      elsif (controller_name == 'users' || controller_name == 'tasks') && action_name == 'index' && !current_user.admin_status
         redirect_to dashboard_path, alert: "Access denied."
       end
     end
+
+
 end
