@@ -11,10 +11,9 @@ class DashboardController < ApplicationController
     @random_quote = "This is a sample quote"
     @recent_entries = Entry.order(created_at: :desc).limit(5)
     @tasks = current_user.tasks.order(:position).all
-    @tasks_due_today = Task.where(deadline: Date.today)
-    @tasks_due_tomorrow = Task.where(deadline: Date.tomorrow)
-    @tasks_within_week = Task.where('deadline <= ?', 1.week.from_now)
-    @tasks_within_30_days = Task.where('deadline <= ?', 30.days.from_now)
-    @calendar = SimpleCalendar::Calendar.new(date: Date.today)
+    @tasks_due_today = current_user.tasks.where(deadline: Date.today)
+    @tasks_due_tomorrow = current_user.tasks.where(deadline: Date.tomorrow)
+    @tasks_within_week = current_user.tasks.where('deadline <= ?', 1.week.from_now)
+    @tasks_within_30_days = current_user.tasks.where('deadline <= ?', 30.days.from_now)
   end
 end

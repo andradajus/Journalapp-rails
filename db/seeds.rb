@@ -9,7 +9,7 @@
 #   end
 
 
-user = User.create(
+user = User.create!(
   uid: '0',
   username: 'admin',
   email: 'admin@admin.com',
@@ -17,6 +17,7 @@ user = User.create(
   last_name: 'User',
   birthday: Date.today,
   country: 'Earth',
-  password: 'admin',
-  admin: true
+  password: 'adminpassword',
+  password_confirmation: 'adminpassword',
+  admin_status: true
 )

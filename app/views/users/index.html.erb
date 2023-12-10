@@ -1,14 +1,19 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+  <div>
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Users</h1>
-    <%= link_to "New user", new_user_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+    <div class="flex justify-center items-center">
+      <h1 class="flex font-bold text-4xl mt-2">Users Table</h1>
+    </div>
 
-  <div id="users" class="min-w-full">
-    <%= render @users %>
+    <div id="users" class="min-w-full">
+      <%= render partial: 'user', locals: { users: @users } %>
+    </div>
+
+    <div class="flex justify-center mt-1">
+      <%= link_to 'Return', dashboard_path, class: 'rounded-lg p-2 bg-slate-200 hover:bg-slate-400 mr-2 cursor-pointer' %>
+    </div>
   </div>
 </div>

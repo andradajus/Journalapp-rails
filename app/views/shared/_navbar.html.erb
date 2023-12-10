@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between flex-wrap bg-slate-800 p-3">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
-    <%= link_to root_path, class: "flex items-center" do %>
+    <%= link_to dashboard_path, class: "flex items-center" do %>
       <%= image_tag('https://www.svgrepo.com/show/344939/journal-bookmark.svg', class: 'fill-current h-8 w-8 mr-2 mt-4', width: 75, height: 75) %>
       <div class="flex flex-col">
       <span class="font-semibold text-xl tracking-tight">Journal App </span>
@@ -18,17 +18,23 @@
       <%= link_to edit_user_path(@user), class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" do %>
         My Account
       <% end %>
-      <%= link_to tasks_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" do %>
-        Tasks
-      <% end %>
-      <%= link_to edit_user_path(@user), class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white" do %>
-        Users
+
+       <% if current_user.admin_status %>
+        <%= link_to users_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" do %>
+          Users
+        <% end %>
+        <%= link_to tasks_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white" do %>
+          Tasks
+        <% end %>
       <% end %>
     </div>
-    <%= link_to login_path, method: :delete, class: 'flex flex-row px-3 py-2 shadow rounded-md hover:text-white bg-red-500 hover:bg-red-700 mt-4 lg:mt-0 items-center justify-center text-center' do %>
-  <%= image_tag('https://www.svgrepo.com/show/374962/logout.svg', class: 'fill-current h-8 w-8 mr-2', width: 10, height: 110) %>
-  Logout
-  <% end %>
+    <div class="flex flex-row px-3 py-2 shadow rounded-md hover:text-white bg-red-500 hover:bg-red-700 cursor-pointer">
+      <%= form_tag logout_path, method: :delete, class: 'flex flex-row items-center' do %>
+        <%= image_tag('https://www.svgrepo.com/show/374962/logout.svg', class: 'fill-current h-8 w-8 mr-2') %>
+        <%= submit_tag "Logout", class: 'cursor-pointer' %>
+      <% end %>
+    </div>
+
 
   </div>
 </nav>

@@ -1,6 +1,4 @@
-
 class User < ApplicationRecord
-  has_secure_password
   before_save :encrypt_password
   before_create :set_uid
   has_many :entries
