@@ -2,15 +2,18 @@ class TasksController < ApplicationController
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index
+    if current_user.nil?
+      redirect_to dashboard_path, alert: "Access denied."
+    else
     @tasks = current_user.tasks.order(:position).all
     @calendar_events = @tasks.map { |task| { title: task.name, start: task.deadline } }
     @current_date = Date.today
-    @tasks_due_today = @tasks.where(deadline: Date.today)
-    @tasks_due_tomorrow = @tasks.where(deadline: Date.tomorrow)
-    @tasks_within_week = @tasks.where('deadline <= ?', 1.week.from_now)
-    @tasks_within_30_days = @tasks.where('deadline <= ?', 30.days.from_now)
+    @tasks_due_today = current_user.tasks.where(deadline: Date.today)
+    @tasks_due_tomorrow = current_user.tasks.where(deadline: Date.tomorrow)
+    @tasks_within_week = current_user.tasks.where('deadline <= ?', 1.week.from_now)
+    @tasks_within_30_days = current_user.tasks.where('deadline <= ?', 30.days.from_now)
+    end
   end
-
 
   def show
     # ...
@@ -33,11 +36,14 @@ class TasksController < ApplicationController
 
 
   def edit
+    @user = current_user
+    @tasks = current_user.tasks.order(:position).all
+    @calendar_events = @tasks.map { |task| { title: task.name, start: task.deadline } }
     @current_date = Date.today
-    @random_quote = "This is a sample quote"
-    @recent_entries = Entry.order(created_at: :desc).limit(5)
-    @upcoming_reminders = Reminder.where('date >= ?', DateTime.now).order(date: :asc).limit(5)
-    @tasks = Task.all
+    @tasks_due_today = current_user.tasks.where(deadline: Date.today)
+    @tasks_due_tomorrow = current_user.tasks.where(deadline: Date.tomorrow)
+    @tasks_within_week = current_user.tasks.where('deadline <= ?', 1.week.from_now)
+    @tasks_within_30_days = current_user.tasks.where('deadline <= ?', 30.days.from_now)
   end
 
   def update
@@ -82,6 +88,7 @@ class TasksController < ApplicationController
 
 
   private
+
 
   def find_task
     @task = Task.find(params[:id])

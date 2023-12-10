@@ -2,10 +2,10 @@
   <ul class="flex flex-wrap">
     <% @tasks.each do |task| %>
       <li class="flex shrink shadow-md rounded-md hover:scale-110 hover:ease-in-out duration-300 object-cover p-2 m-2 h-48 w-64">
-        <div class="flex flex-col cursor-pointer">
+        <div class="flex flex-col">
 
           <div class="flex justify-between">
-            <%= link_to 'Edit', edit_task_path(task), class: ' py-1 px-3 rounded-lg bg-slate-500 text-white hover:bg-slate-700 cursor-pointer text-sm' %>
+            <%= link_to 'Edit', edit_task_path(task), class: 'py-1 px-3 rounded-lg bg-slate-500 text-white hover:bg-slate-700 cursor-pointer text-sm' %>
             <% if task.pending? %>
               <%= form_with(model: task, url: update_status_task_path(task), method: :patch, local: true, class: 'inline-block') do |form| %>
                 <%= form.hidden_field :status, value: 'completed' %>
@@ -33,7 +33,9 @@
 
           <div class="flex flex-row">
             <strong class="mr-1">Status: </strong> 
-            <%= task.status&.titleize %>
+             <span class="<%= task.status == 'pending' ? 'flex justify-center py-1 px-1 bg-red-500 text-white rounded-lg shadow-md' : 'flex justify-center bg-green-500 text-white py-1 px-1 rounded-lg shadow-md' %> text-sm">
+                    <%= task.status&.titleize %>
+                  </span>
           </div>
 
           <div class="flex flex-row text-sm">

@@ -46,7 +46,7 @@
 
 
   <div class="col-span-2 row-span-2 col-start-4 row-start-4 bg-slate-200 shadow-md rounded-md mr-2">
-     <%= render partial: 'reminder/reminders', locals: { reminders_due_today: @reminders_due_today, reminders_within_week: @reminders_within_week } %>
+  <%= render partial: 'reminder/reminders', locals: { reminders_due_today: @reminders_due_today, reminders_within_week: @reminders_within_week, current_user: current_user } %>
   </div>
 </div>
 
