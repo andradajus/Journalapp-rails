@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :require_admin, only: [:index]
   before_action :find_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -96,6 +97,14 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:category, :task, :deadline, :status, :description)
+  end
+
+  def require_admin
+    if current_user.nil?
+      redirect_to dashboard_path, alert: "Access denied."
+    elsif (controller_name == 'users' || controller_name == 'tasks') && action_name == 'index' && !current_user.admin_status
+      redirect_to dashboard_path, alert: "Access denied."
+    end
   end
 
 end

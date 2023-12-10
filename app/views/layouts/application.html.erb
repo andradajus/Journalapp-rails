@@ -12,6 +12,7 @@
   </head>
 
   <body>
+<<<<<<< HEAD
    <% flash.each do |type, message| %>
   <div class="absolute ml-2 top-0 left-0 px-4 py-3 rounded transition-opacity duration-300 fade-out
               <%= type == 'notice' ? 'bg-green-100 border border-green-400 text-green-700' : 'bg-red-100 border border-red-400 text-red-700' %>">
@@ -19,11 +20,15 @@
     <button class="close-button" style="float: right;">X</button>
   </div>
 <% end %>
+=======
+  
+>>>>>>> main
 
     <main class="bg-slate-500 w-screen h-screen max-w-screen max-h-screen">
       <%= yield %>
     </main>
 
+<<<<<<< HEAD
     <script>
     document.addEventListener("DOMContentLoaded", function() {
   var closeButtons = document.querySelectorAll('.close-button');
@@ -34,6 +39,9 @@
   });
 });
     </script>
+=======
+  
+>>>>>>> main
     
   </body>
 </html>

@@ -10,8 +10,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
 
     if @current_user.nil?
+<<<<<<< HEAD
       # Handle the situation where the user is not found
       session[:user_id] = nil  # Clear the session to prevent further issues
+=======
+      session[:user_id] = nil
+>>>>>>> main
       flash[:alert] = 'Session expired. Please log in again.'
       redirect_to login_path
     end

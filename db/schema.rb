@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.1].define(version: 2023_12_10_114959) do
+=======
+ActiveRecord::Schema[7.1].define(version: 2023_12_10_154218) do
+>>>>>>> main
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -69,7 +73,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_114959) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.boolean "admin_status", default: false
+=======
+    t.boolean "admin_status"
+>>>>>>> main
   end
 
   add_foreign_key "entries", "users"

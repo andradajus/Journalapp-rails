@@ -65,6 +65,7 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:email, :username, :first_name, :last_name, :country, :birthday, :password, :password_confirmation, :admin_status)
+<<<<<<< HEAD
     end
 
     def require_admin
@@ -73,5 +74,17 @@ class UsersController < ApplicationController
       elsif (params[:controller] == 'users' || params[:controller] == 'tasks') && params[:action] == 'index' && !current_user.admin_status
         redirect_to dashboard_path, alert: "Access denied."
       end
+=======
+>>>>>>> main
     end
+
+    def require_admin
+      if current_user.nil?
+        redirect_to dashboard_path, alert: "Access denied."
+      elsif (controller_name == 'users' || controller_name == 'tasks') && action_name == 'index' && !current_user.admin_status
+        redirect_to dashboard_path, alert: "Access denied."
+      end
+    end
+
+
 end
