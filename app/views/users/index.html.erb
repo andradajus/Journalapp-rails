@@ -12,8 +12,17 @@
       <%= render partial: 'user', locals: { users: @users } %>
     </div>
 
-    <div class="flex justify-center mt-1">
+  <div class="flex justify-center mt-1">
+    <div class="flex justify-center">
+          <%= link_to "Go to Tasks", tasks_path, class: "rounded-lg p-2 bg-slate-400 text-white hover:bg-slate-600 cursor-pointer" %>
+    </div>
+
+    <div class="flex justify-center ml-1">
       <%= link_to 'Return', dashboard_path, class: 'rounded-lg p-2 bg-slate-200 hover:bg-slate-400 mr-2 cursor-pointer' %>
     </div>
+
+  </div>
+
+
   </div>
 </div>

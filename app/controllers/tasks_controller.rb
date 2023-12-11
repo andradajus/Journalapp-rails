@@ -7,6 +7,7 @@ class TasksController < ApplicationController
       redirect_to dashboard_path, alert: "Access denied."
     else
     @tasks = current_user.tasks.order(:position).all
+    @tasks_admin = Task.order(:position).all
     @calendar_events = @tasks.map { |task| { title: task.name, start: task.deadline } }
     @current_date = Date.today
     @tasks_due_today = current_user.tasks.where(deadline: Date.today)
