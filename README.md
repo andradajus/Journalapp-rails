@@ -3,6 +3,8 @@ Rails version Rails 7.1.2
 Ruby version 3.2.2  
 This project is made with large screen size and no media queuries have been used for smaller screen sizes
 
+Icons are fetched from [SVGRepo](https://www.svgrepo.com/). Credits to the owners.
+
 ## Gems used
 
 ### Simple calendar or [GitHub](https://github.com/excid3/simple_calendar)
@@ -26,11 +28,8 @@ Gemfile:
 `gem 'bcrypt', '~> 3.1', '>= 3.1.12'`  
 `gem install bcrypt -v 3.1.12`
 
-#### My go to ruby authentication
+My go to ruby authentication  
 
-### Widget Used
-
-#### [Weather Widget](https://elfsight.com/weather-widget/html/)
 
 ## Basic Functions
 

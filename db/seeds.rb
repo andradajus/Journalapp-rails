@@ -21,3 +21,29 @@ user = User.create!(
   password_confirmation: 'adminpassword',
   admin_status: true
 )
+
+User.create!(
+  uid: '1',
+  username: 'deleteme',
+  email: 'deleteme@example.com',
+  first_name: 'Delete',
+  last_name: 'Me',
+  birthday: Date.today,
+  country: 'Earth',
+  password: 'deletemepassword',
+  password_confirmation: 'deletemepassword',
+  admin_status: false
+)
+
+User.create!(
+  uid: '2',
+  username: 'updateme',
+  email: 'updateme@example.com',
+  first_name: 'Update',
+  last_name: 'Me',
+  birthday: Date.today,
+  country: 'Earth',
+  password: 'updatemepassword',
+  password_confirmation: 'updatemepassword',
+  admin_status: false
+)
