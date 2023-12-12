@@ -1,36 +1,40 @@
 <div class="flex flex-row justify-center w-min-full">
-  <% { 
-      'TASKS DUE TODAY' => @tasks_due_today, 
-      'TASKS DUE TOMORROW' => @tasks_due_tomorrow, 
-      'TASKS DUE THIS WEEK' => @tasks_due_within_week, 
-      'TASKS DUE THIS MONTH' => @tasks_due_within_month 
-    }.each do |title, tasks| %>
-    <div class="flex flex-col mt-4 shadow-md border-md">
-      <% if tasks.present? %>
-        <span class="flex justify-center text-lg font-bold underline underline-offset-8"><%= title %></span>
-        <table class="divide-y divide-gray-200 m-2">
-          <thead>
-            <tr>
-              <th class="py-2">Task</th>
-              <th class="py-2">Deadline</th>
-              <th class="py-2">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% tasks.each do |task| %>
-              <tr class="shadow-md border-md hover:scale-110">
-                <td class="ml-1"><%= task.task %></td>
-                <td class="ml-1 p-2"><%= task.deadline %></td>
-                <td class="p-2">
-                 <span class="<%= task.status == 'pending' ? 'flex justify-center py-1 px-1 bg-red-500 text-white rounded-lg shadow-md' : 'flex justify-center bg-green-500 text-white py-1 px-1 rounded-lg shadow-md' %> text-sm">
-                    <%= task.status&.titleize %>
-                  </span>
-                </td>
+  <% if @tasks.nil? || @tasks.empty? %>
+    <div class="text-lg font-bold underline underline-offset-8 text-center m-2">NO TASK DUE TODAY</div>
+  <% else %>
+    <% { 
+        'TASKS DUE TODAY' => @tasks_due_today, 
+        'TASKS DUE TOMORROW' => @tasks_due_tomorrow, 
+        'TASKS DUE THIS WEEK' => @tasks_due_within_week, 
+        'TASKS DUE THIS MONTH' => @tasks_due_within_month 
+      }.each do |title, tasks| %>
+      <div class="flex flex-col mt-4 shadow-md border-md">
+        <% if tasks.present? %>
+          <span class="flex justify-center text-lg font-bold underline underline-offset-8"><%= title %></span>
+          <table class="divide-y divide-gray-200 m-2">
+            <thead>
+              <tr>
+                <th class="py-2">Task</th>
+                <th class="py-2">Deadline</th>
+                <th class="py-2">Status</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <% end %>
-    </div>
+            </thead>
+            <tbody>
+              <% tasks.each do |task| %>
+                <tr class="shadow-md border-md hover:scale-110">
+                  <td class="ml-1"><%= task.task %></td>
+                  <td class="ml-1 p-2"><%= task.deadline %></td>
+                  <td class="p-2">
+                  <span class="<%= task.status == 'pending' ? 'flex justify-center py-1 px-1 bg-red-500 text-white rounded-lg shadow-md' : 'flex justify-center bg-green-500 text-white py-1 px-1 rounded-lg shadow-md' %> text-sm">
+                      <%= task.status&.titleize %>
+                    </span>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>

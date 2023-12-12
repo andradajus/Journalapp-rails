@@ -1,72 +1,76 @@
 <div class="overflow-auto">
-  <ul class="flex flex-wrap">
-    <% @tasks.each do |task| %>
-      <li class="flex shrink shadow-md rounded-md hover:scale-110 hover:ease-in-out duration-300 object-cover p-2 m-2 h-48 w-64">
-        <div class="flex flex-col">
+ <% if @tasks.nil? || @tasks.empty? %>
+    <div class="text-lg font-bold underline underline-offset-8 text-center m-2">NO CREATED TASKS</div>
+  <% else %>
+    <ul class="flex flex-wrap">
+      <% @tasks.each do |task| %>
+        <li class="flex shrink shadow-md rounded-md hover:scale-110 hover:ease-in-out duration-300 object-cover p-2 m-2 h-48 w-64">
+          <div class="flex flex-col">
 
-          <div class="flex justify-between">
-            <%= link_to 'Edit', edit_task_path(task), class: 'py-1 px-3 rounded-lg bg-slate-500 text-white hover:bg-slate-700 cursor-pointer text-sm' %>
-            <% if task.pending? %>
-              <%= form_with(model: task, url: update_status_task_path(task), method: :patch, local: true, class: 'inline-block') do |form| %>
-                <%= form.hidden_field :status, value: 'completed' %>
-                <%= form.submit 'Mark as Completed', class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-lg cursor-pointer text-sm ml-1' %>
+            <div class="flex justify-between">
+              <%= link_to 'Edit', edit_task_path(task), class: 'py-1 px-3 rounded-lg bg-slate-500 text-white hover:bg-slate-700 cursor-pointer text-sm' %>
+              <% if task.pending? %>
+                <%= form_with(model: task, url: update_status_task_path(task), method: :patch, local: true, class: 'inline-block') do |form| %>
+                  <%= form.hidden_field :status, value: 'completed' %>
+                  <%= form.submit 'Mark as Completed', class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-lg cursor-pointer text-sm ml-1' %>
+                <% end %>
               <% end %>
+            </div>
+          
+
+          <div>
+            <div class="flex flex-row">
+              <strong class="mr-1">Category:</strong> 
+              <%= task.category %>
+            </div>
+
+            <div class="flex flex-row">
+              <strong class="mr-1">Task: </strong> 
+              <%= task.task %>
+            </div>
+
+            <div class="flex flex-row">
+              <strong class="mr-1">Deadline: </strong> 
+              <%= task.deadline %>
+            </div>
+
+            <div class="flex flex-row">
+              <strong class="mr-1">Status: </strong> 
+              <span class="<%= task.status == 'pending' ? 'flex justify-center py-1 px-1 bg-red-500 text-white rounded-lg shadow-md' : 'flex justify-center bg-green-500 text-white py-1 px-1 rounded-lg shadow-md' %> text-sm">
+                      <%= task.status&.titleize %>
+                    </span>
+            </div>
+
+            <div class="flex flex-row text-sm">
+              <%= task.description %>
+            </div>
+          </div>
+
+        <div class="flex flex-row"> 
+          <div>
+          <%= form_with(model: task, method: :delete, data: { confirm: "Are you sure?" }, local: true, class: 'delete-form') do |form| %>
+            <%= form.button '', type: 'submit', class: 'font-bold py-1 px-3 rounded-lg cursor-pointer text-sm bg-red-500 hover:bg-red-700 flex items-center justify-center text-white justify-center' do %>
+              <%= image_tag('https://www.svgrepo.com/show/244045/delete-trash.svg', alt: 'Delete Icon 1', class: 'fill-current h-5 w-5 justify-end mr-2') %>
+              Delete Task
+            <% end %>
+          <% end %>
+          </div>
+
+          <div>
+            <%= button_to move_up_task_path(task), method: :patch, class: 'rounded-lg hover:bg-slate-700 cursor-pointer py-1 px-3 rounded-lg ml-1' do %>
+              <%= image_tag('https://www.svgrepo.com/show/470176/up-direction-2.svg', alt: 'Move Up Icon', class: 'fill-current h-5 w-5') %>
             <% end %>
           </div>
-        
 
-        <div>
-          <div class="flex flex-row">
-            <strong class="mr-1">Category:</strong> 
-            <%= task.category %>
+          <div>
+                <%= button_to move_down_task_path(task), method: :patch, class: 'rounded-lg  hover:bg-slate-700 cursor-pointer py-1 px-3 rounded-lg ml-1' do %>
+                  <%= image_tag('https://www.svgrepo.com/show/468675/down-direction-2.svg', alt: 'Move Down Icon', class: 'fill-current h-5 w-5') %>
+            <% end %>
           </div>
 
-          <div class="flex flex-row">
-            <strong class="mr-1">Task: </strong> 
-            <%= task.task %>
-          </div>
-
-          <div class="flex flex-row">
-            <strong class="mr-1">Deadline: </strong> 
-            <%= task.deadline %>
-          </div>
-
-          <div class="flex flex-row">
-            <strong class="mr-1">Status: </strong> 
-             <span class="<%= task.status == 'pending' ? 'flex justify-center py-1 px-1 bg-red-500 text-white rounded-lg shadow-md' : 'flex justify-center bg-green-500 text-white py-1 px-1 rounded-lg shadow-md' %> text-sm">
-                    <%= task.status&.titleize %>
-                  </span>
-          </div>
-
-          <div class="flex flex-row text-sm">
-            <%= task.description %>
-          </div>
-        </div>
-
-      <div class="flex flex-row"> 
-        <div>
-        <%= form_with(model: task, method: :delete, data: { confirm: "Are you sure?" }, local: true, class: 'delete-form') do |form| %>
-          <%= form.button '', type: 'submit', class: 'font-bold py-1 px-3 rounded-lg cursor-pointer text-sm bg-red-500 hover:bg-red-700 flex items-center justify-center text-white justify-center' do %>
-            <%= image_tag('https://www.svgrepo.com/show/244045/delete-trash.svg', alt: 'Delete Icon 1', class: 'fill-current h-5 w-5 justify-end mr-2') %>
-            Delete Task
-          <% end %>
-        <% end %>
-        </div>
-
-        <div>
-          <%= button_to move_up_task_path(task), method: :patch, class: 'rounded-lg hover:bg-slate-700 cursor-pointer py-1 px-3 rounded-lg ml-1' do %>
-            <%= image_tag('https://www.svgrepo.com/show/470176/up-direction-2.svg', alt: 'Move Up Icon', class: 'fill-current h-5 w-5') %>
-          <% end %>
-        </div>
-
-        <div>
-              <%= button_to move_down_task_path(task), method: :patch, class: 'rounded-lg  hover:bg-slate-700 cursor-pointer py-1 px-3 rounded-lg ml-1' do %>
-                <%= image_tag('https://www.svgrepo.com/show/468675/down-direction-2.svg', alt: 'Move Down Icon', class: 'fill-current h-5 w-5') %>
-          <% end %>
-        </div>
-
-      </div>  
-      </li>
-    <% end %>
+        </div>  
+        </li>
+      <% end %>
   </ul>
+  <% end %>
 </div>
