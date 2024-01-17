@@ -13,7 +13,6 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -35,10 +34,11 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 RUN chmod +x ./bin/rails
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-# RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-RUN SECRET_KEY_BASE_DUMMY=1 /rails/bin/rails assets:precompile
+RUN chmod +x ./bin/docker-entrypoint  # Ensure entrypoint script has execute permission
+RUN chmod +x ./bin/dev  # Ensure dev script has execute permission
 
+# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE_DUMMY=1 /rails/bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
@@ -56,10 +56,8 @@ COPY --from=build /rails /rails
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 
-
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
